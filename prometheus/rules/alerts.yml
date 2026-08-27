@@ -84,8 +84,7 @@ groups:
           category: cost
         annotations:
           summary: "Unexpected AWS cost spike detected"
-          description: "Daily costs are 50% above the 7-day average (current: ${{ $value | humanize }}, average: ${{ avg_over_time(aws_daily_cost[7d]) | humanize }})"
-
+          description: "Daily costs are 50% above the 7-day average (current: ${{ $value | humanize }}"
       - alert: MonthlyBudgetExceeded
         expr: aws_monthly_cost > 5000
         for: 1h

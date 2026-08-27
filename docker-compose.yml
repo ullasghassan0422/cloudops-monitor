@@ -106,10 +106,22 @@ services:
       - /var/lib/docker/:/var/lib/docker:ro
       - /dev/disk/:/dev/disk:ro
     ports:
-      - "8080:8080"
+      - "8090:8080"
     networks:
       - cloudops-network
     privileged: true
+    restart: unless-stopped
+
+  # Flask Application - Test workload
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: cloudops-app
+    ports:
+      - "5000:5000"
+    networks:
+      - cloudops-network
     restart: unless-stopped
 
 networks:
